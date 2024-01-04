@@ -36,3 +36,288 @@
     transform: rotate(360deg);
   }
 }
+
+*{
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.npcCard{
+  margin: 1rem;
+  background-color: #61dafb;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container > div{
+  padding: .25rem .5rem;
+}
+
+.container > li{
+  background-color:#ade3f3;
+  padding: .25rem;
+  margin: .1rem;
+  font-size: .9rem;;
+}
+
+.proficiency{
+  background-color: #282c34;
+  color: black;
+}
+
+.characterAbilities{
+  display: grid;
+  width: 20vw;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "topLeft topLeft topCenter topRight topRight"
+  "midLeft  midCenter midCenter midCenter midRight"
+  "bottomLeft bottomLeft bottomCenter bottomRight bottomRight";
+}
+
+.abilityLabel{
+  padding: 1rem .5rem;
+  border-radius: 1000px;
+  background-color: #8adbf1;
+  font-size: .77rem;
+  place-self: center;
+  grid-area: midCenter;
+}
+
+.ability{
+  text-align: center;
+  margin: .25rem;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  background-color: #8adbf1;
+}
+
+.ability > :first-child{
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: .5rem;
+  opacity: .75;
+}
+
+.ability > :last-child{ 
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.ability1{
+  place-self: end;
+  grid-area: topLeft;
+}
+
+.ability2{
+  place-self: start;
+  grid-area: topRight;
+}
+
+.ability3{
+  place-self: center;
+  grid-area: midLeft;
+}
+
+.ability4{
+  place-self: center;
+  grid-area: midRight;
+}
+
+.ability5{
+  place-self: end;
+  grid-area: bottomLeft;
+}
+
+.ability6{
+  place-self: start;
+  grid-area: bottomRight;
+}
+
+.characterSaves{
+  display: grid;
+  width: 20vw;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "topLeft topLeft topCenter topRight topRight"
+  "midLeft  midCenter midCenter midCenter midRight"
+  "bottomLeft bottomLeft bottomCenter bottomRight bottomRight";
+}
+
+.save{
+  text-align: center;
+  margin: .25rem;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  background-color: #8adbf1;
+}
+
+.save > :first-child{
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: .5rem;
+  opacity: .75;
+}
+
+.save > :last-child{ 
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.saveLabel{
+  padding: 1rem .5rem;
+  border-radius: 1000px;
+  background-color: #8adbf1;
+  font-size: .77rem;
+  place-self: center;
+  grid-area: midCenter;
+}
+
+.save1{
+  place-self: end;
+  grid-area: topLeft;
+}
+.save2{
+  place-self: start;
+  grid-area: topRight;
+}
+.save3{
+  place-self: start;
+  grid-area: midRight;
+}
+.save4{
+  place-self: end;
+  grid-area: midLeft;
+}
+.save5{
+  place-self: end;
+  grid-area: bottomLeft;
+}
+.save6{
+  place-self: start;
+  grid-area: bottomRight;
+}
+
+.characterSkills{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "s1 s2 s3 s4 s5 s6 s7"
+  "s8 s9 s10 s11 s12 s13 s14"
+  "s15 s16 s17 s18 s19 s20 s21";
+}
+
+.skillLabel{
+  text-align: center;
+  font-size: 1rem;
+}
+
+.skill{
+  text-align: center;                 
+  border-radius: 5px;
+  background-color: #8adbf1;
+}
+
+.skill > :first-child{
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: .65rem;
+  opacity: .75;
+}
+
+.skill > :last-child{ 
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.skill1{
+  grid-area: s1;
+}
+
+.skill2{
+  grid-area: s2;
+}
+
+.skill3{
+  grid-area: s3;
+}
+
+.skill4{
+  grid-area: s5;
+}
+
+.skill5{
+  grid-area: s6;
+}
+
+.skill6{
+  grid-area: s7;
+}
+
+.skill7{
+  grid-area: s8;
+}
+
+.skill8{
+  grid-area: s9;
+}
+
+.skill9{
+  grid-area: s10;
+}
+
+.skill10{
+  grid-area: s12;
+}
+
+.skill11{
+  grid-area: s13;
+}
+
+.skill12{
+  grid-area: s14;
+}
+
+.skill13{
+  grid-area: s15;
+}
+
+.skill14{
+  grid-area: s16;
+}
+
+.skill15{
+  grid-area: s17;
+}
+
+.skill16{
+  grid-area: s19;
+}
+
+.skill17{
+  grid-area: s20;
+}
+
+.skill18{
+  grid-area: s21;
+}
+
+.proficiency{
+  background-color: rgb(100, 239, 73) !important;
+}
+
+.expertise{
+  background-color: red !important;
+}
