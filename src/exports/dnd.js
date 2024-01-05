@@ -38,11 +38,11 @@ Dnd.Core.addRacialBonuses = function(){
         case 'HalflingStout': return this.create(Dnd.abilities.HalflingStout);
         case 'HalfOrc': return this.create(Dnd.abilities.HalfOrc);
         case 'Human': return this.create(Dnd.abilities.Human);
-        case 'HumanVariant': return this.create(Dnd.abilities.HumanVariant, 'humanVariant');
+        case 'HumanVariant': return this.create(Dnd.abilities.HumanVariant, 'HumanVariant');
         case 'Dragonborn': return this.create(Dnd.abilities.DragonBorn);
         case 'GnomeForest': return this.create(Dnd.abilities.GnomeForest);
         case 'GnomeRock': return this.create(Dnd.abilities.GnomeRock);
-        case 'HalfElf': return this.create(Dnd.abilities.HalElf, 'halfElf');
+        case 'HalfElf': return this.create(Dnd.abilities.HalElf, 'HalfElf');
         case 'Tiefling': return this.create(Dnd.abilities.Tiefling);
         case 'Aarakocra': return this.create(Dnd.abilities.Aarakocra);
         case 'GenasiEarth': return this.create(Dnd.abilities.GenasiEarth)
@@ -53,18 +53,34 @@ Dnd.Core.addRacialBonuses = function(){
 }
 
 Dnd.Core.createHalfElf = function(){
-
+    const abilities = {};
+    let abilitiesArr = ['str', 'con', 'dex', 'int', 'wis'];
+    let ability1 = this.getRandomElement(abilitiesArr);
+    abilitiesArr = abilitiesArr.filter((ability) => { if(ability != ability1) return ability })
+    let ability2 = this.getRandomElement(abilitiesArr);
+    abilities.cha = 2;
+    abilities[ability1] = 1;
+    abilities[ability2] = 1;
+    this.character.racialAbilities = abilities;
+    
 }
 
 Dnd.Core.createHumanVariant = function(){
-
+    const abilities = {};
+    let abilitiesArr = ['str', 'con', 'dex', 'int', 'wis'];
+    let ability1 = this.getRandomElement(abilitiesArr);
+    abilitiesArr = abilitiesArr.filter((ability) => { if(ability != ability1) return ability; })
+    let ability2 = this.getRandomElement(abilitiesArr);
+    abilities[ability1] = 1;
+    abilities[ability2] = 1;
+    this.character.racialAbilities = abilities;
 }
 
 
 Dnd.Core.create = function(abilities, special) {
     if(special){
-        if('HumanVariant') return this.createHumanVariant();
-        if('HalfElf') return this.createHalfElf();
+        if(special === 'HumanVariant') return this.createHumanVariant();
+        if(special === 'HalfElf') return this.createHalfElf();
     }
 
     for(const key in abilities){
