@@ -74,12 +74,12 @@
 .characterAbilities{
   display: grid;
   width: 20vw;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 
-  "topLeft topLeft topCenter topRight topRight"
-  "midLeft  midCenter midCenter midCenter midRight"
-  "bottomLeft bottomLeft bottomCenter bottomRight bottomRight";
+  "topLeft topLeft topLeft topRight topRight topRight"
+  "midLeft  midCenter midCenter midCenter midCenter midRight"
+  "bottomLeft bottomLeft bottomLeft bottomRight bottomRight bottomRight";
 }
 
 .abilityLabel{
@@ -123,7 +123,7 @@
 }
 
 .ability3{
-  place-self: center;
+  place-self: start;
   grid-area: midLeft;
 }
 
@@ -145,12 +145,12 @@
 .characterSaves{
   display: grid;
   width: 20vw;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   grid-template-areas: 
-  "topLeft topLeft topCenter topRight topRight"
-  "midLeft  midCenter midCenter midCenter midRight"
-  "bottomLeft bottomLeft bottomCenter bottomRight bottomRight";
+  "topLeft topLeft topLeft topRight topRight topRight"
+  "midLeft  midCenter midCenter midCenter midCenter midRight"
+  "bottomLeft bottomLeft bottomLeft bottomRight bottomRight bottomRight";
 }
 
 .save{
@@ -210,8 +210,8 @@
 
 .characterSkills{
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   grid-template-areas: 
   "s1 s2 s3 s4 s5 s6 s7"
   "s8 s9 s10 s11 s12 s13 s14"

@@ -106,87 +106,119 @@ const NPCForm = ({ createMonster }) => {
     )
 }
 
-const NPCCard = ({ index, character }) => {
+const NPCInfoSection = ({character}) => {
+    return(
+            <div className="container">
+                <div>Class: {character.race}</div>
+                <div>Race: {character.class}</div>
+                <div>Level: {character.level}</div>
+            </div>
+    )
+}
+
+const NPCACSection = ({character}) => {
+    return(
+            <div className={'container'}>
+                <div>Proficiency Bonus: {character.proficiencyBonus}</div>
+                <div>AC: {character.ac}</div>
+                <div>Initiative: {character.initiative}</div>
+            </div>
+    )
+}
+
+const NPCAbilitiesSection = ({character}) => {
+    return(
+        <div className={''}>
+            <ul className={'characterAbilities'}>
+                {/* <li className='ability ability1'>Str: {character.abilities.str}</li> */}
+                <li className='ability ability1'><div>STR</div><div>{character.abilities.str}</div></li>
+                <li className='ability ability2'><div>CON</div><div>{character.abilities.con}</div></li>
+                <li className='ability ability3'><div>DEX</div><div>{character.abilities.dex}</div></li>
+                <li className={'abilityLabel'}>Abilities</li>
+                <li className='ability ability4'><div>INT</div><div>{character.abilities.int}</div></li>
+                <li className='ability ability5'><div>WIS</div><div>{character.abilities.wis}</div></li>
+                <li className='ability ability6'><div>CHA</div><div>{character.abilities.cha}</div></li>
+            </ul>                            
+        </div>
+    )
+}
+
+const NPCSavesSection = ({character}) => {
+    return(
+        <div>
+            <ul className={'characterSaves'}>
+                <li className={'save save1'}><div>STR</div><div>{character.saves.str}</div></li>
+                <li className={'save save2'}><div>CON</div><div>{character.saves.con}</div></li>
+                <li className={'save save3'}><div>DEX</div><div>{character.saves.dex}</div></li>
+                <li className='saveLabel'>Saves:</li>
+                <li className={'save save4'}><div>INT</div><div>{character.saves.int}</div></li>
+                <li className={'save save5'}><div>WIS</div><div>{character.saves.wis}</div></li>
+                <li className={'save save6'}><div>CHA</div><div>{character.saves.cha}</div></li>
+            </ul>
+        </div>
+    )
+}
+
+const NPCSkillSection = ({character}) => {
     function proficient(skill) {
         let proficiencyType = '';
         if(character.proficiencies.includes(skill)) proficiencyType = 'proficiency'
         if(character.expertise.includes(skill)) proficiencyType = 'expertise';
         return proficiencyType;
     }
+
+    return(
+        <div>
+            <div className="skillLabel">Skills:</div>
+            <ul className={'container characterSkills'}>
+                <li className={`skill skill1 ${proficient('athletics')}`}><div>Athletics</div><div>{character.skills.athletics}</div></li>
+                <li className={`skill skill2 ${proficient('animalHandling')}`}><div>Animal Handling</div><div>{character.skills.animalHandling}</div></li>
+                <li className={`skill skill3 ${proficient('arcana')}`}><div>Arcana</div><div>{character.skills.arcana}</div></li>
+                <li className={`skill skill4 ${proficient('acrobatics')}`}><div>Acrobatics</div><div>{character.skills.acrobatics}</div></li>
+                <li className={`skill skill5 ${proficient('deception')}`}><div>Deception</div><div>{character.skills.deception}</div></li>
+                <li className={`skill skill6 ${proficient('history')}`}><div>History</div><div>{character.skills.history}</div></li>
+                <li className={`skill skill7 ${proficient('insight')}`}><div>Insight</div><div>{character.skills.insight}</div></li>
+                <li className={`skill skill8 ${proficient('intimidation')}`}><div>Intimidation</div><div>{character.skills.intimidation}</div></li>
+                <li className={`skill skill9 ${proficient('investigation')}`}><div>Investigation</div><div>{character.skills.investigation}</div></li>
+                <li className={`skill skill10 ${proficient('medicine')}`}><div>Medicine</div><div>{character.skills.medicine}</div></li>
+                <li className={`skill skill11 ${proficient('nature')}`}><div>Nature</div><div>{character.skills.nature}</div></li>
+                <li className={`skill skill12 ${proficient('perception')}`}><div>Perception</div><div>{character.skills.perception}</div></li>
+                <li className={`skill skill13 ${proficient('performance')}`}><div>Performance</div><div>{character.skills.performance}</div></li>
+                <li className={`skill skill14 ${proficient('persuasion')}`}><div>Persuasion</div><div>{character.skills.persuasion}</div></li>
+                <li className={`skill skill15 ${proficient('religion')}`}><div>Religion</div><div>{character.skills.religion}</div></li>
+                <li className={`skill skill16 ${proficient('sleightOfHand')}`}><div>Sleight Of Hand</div><div>{character.skills.sleightOfHand}</div></li>
+                <li className={`skill skill17 ${proficient('stealth')}`}><div>Stealth</div><div>{character.skills.stealth}</div></li>
+                <li className={`skill skill18 ${proficient('survival')}`}><div>Survival</div><div>{character.skills.survival}</div></li>
+            </ul>
+        </div>
+    )
+}
+
+const NPCPassives = ({character}) => {
+    return(
+        <div>
+            <div>Passives:</div>
+            <ul className={'container characterPassives'}>
+                <li id='passive1'>Perception: {character.passives.perception}</li>
+                <li id='passive2'>Investigation: {character.passives.investigation}</li>
+                <li id='passive3'>Insight: {character.passives.insight}</li>
+            </ul>
+        </div>
+    )
+}
+
+const NPCCard = ({ index, character }) => {
     return (
         <div key={index} className={'npcCard'}>
+            <NPCInfoSection character={character}/>
+            <NPCACSection character={character}/>
             <div className="container">
-                <div>Class: {character.race}</div>
-                <div>Race: {character.class}</div>
-                <div>Level: {character.level}</div>
+                <NPCAbilitiesSection character={character}/>
+                <NPCSavesSection character={character}/>
+                <NPCSkillSection character={character}/>  
             </div>
-            
-            <div className={'container'}>
-                <div>Proficiency Bonus: {character.proficiencyBonus}</div>
-                <div>AC: {character.ac}</div>
-                <div>Initiative: {character.initiative}</div>
-            </div>
+            <NPCPassives character={character}/>
 
-            <div className="container">
-                <div className={''}>
-                    <ul className={'characterAbilities'}>
-                        {/* <li className='ability ability1'>Str: {character.abilities.str}</li> */}
-                        <li className='ability ability1'><div>STR</div><div>{character.abilities.str}</div></li>
-                        <li className='ability ability2'><div>CON</div><div>{character.abilities.con}</div></li>
-                        <li className='ability ability3'><div>DEX</div><div>{character.abilities.dex}</div></li>
-                        <li className={'abilityLabel'}>Abilities</li>
-                        <li className='ability ability4'><div>INT</div><div>{character.abilities.int}</div></li>
-                        <li className='ability ability5'><div>WIS</div><div>{character.abilities.wis}</div></li>
-                        <li className='ability ability6'><div>CHA</div><div>{character.abilities.cha}</div></li>
-                    </ul>                            
-                </div>
-
-                <div>
-                    <ul className={'characterSaves'}>
-                        <li className={'save save1'}><div>STR</div><div>{character.saves.str}</div></li>
-                        <li className={'save save2'}><div>CON</div><div>{character.saves.con}</div></li>
-                        <li className={'save save3'}><div>DEX</div><div>{character.saves.dex}</div></li>
-                        <li className='saveLabel'>Saves:</li>
-                        <li className={'save save4'}><div>INT</div><div>{character.saves.int}</div></li>
-                        <li className={'save save5'}><div>WIS</div><div>{character.saves.wis}</div></li>
-                        <li className={'save save6'}><div>CHA</div><div>{character.saves.cha}</div></li>
-                    </ul>
-                </div>
-                
-                <div>
-                        <div className="skillLabel">Skills:</div>
-                    <ul className={'container characterSkills'}>
-                        <li className={`skill skill1 ${proficient('athletics')}`}><div>Athletics</div><div>{character.skills.athletics}</div></li>
-                        <li className={`skill skill2 ${proficient('animalHandling')}`}><div>Animal Handling</div><div>{character.skills.animalHandling}</div></li>
-                        <li className={`skill skill3 ${proficient('arcana')}`}><div>Arcana</div><div>{character.skills.arcana}</div></li>
-                        <li className={`skill skill4 ${proficient('acrobatics')}`}><div>Acrobatics</div><div>{character.skills.acrobatics}</div></li>
-                        <li className={`skill skill5 ${proficient('deception')}`}><div>Deception</div><div>{character.skills.deception}</div></li>
-                        <li className={`skill skill6 ${proficient('history')}`}><div>History</div><div>{character.skills.history}</div></li>
-                        <li className={`skill skill7 ${proficient('insight')}`}><div>Insight</div><div>{character.skills.insight}</div></li>
-                        <li className={`skill skill8 ${proficient('intimidation')}`}><div>Intimidation</div><div>{character.skills.intimidation}</div></li>
-                        <li className={`skill skill9 ${proficient('investigation')}`}><div>Investigation</div><div>{character.skills.investigation}</div></li>
-                        <li className={`skill skill10 ${proficient('medicine')}`}><div>Medicine</div><div>{character.skills.medicine}</div></li>
-                        <li className={`skill skill11 ${proficient('nature')}`}><div>Nature</div><div>{character.skills.nature}</div></li>
-                        <li className={`skill skill12 ${proficient('perception')}`}><div>Perception</div><div>{character.skills.perception}</div></li>
-                        <li className={`skill skill13 ${proficient('performance')}`}><div>Performance</div><div>{character.skills.performance}</div></li>
-                        <li className={`skill skill14 ${proficient('persuasion')}`}><div>Persuasion</div><div>{character.skills.persuasion}</div></li>
-                        <li className={`skill skill15 ${proficient('religion')}`}><div>Religion</div><div>{character.skills.religion}</div></li>
-                        <li className={`skill skill16 ${proficient('sleightOfHand')}`}><div>Sleight Of Hand</div><div>{character.skills.sleightOfHand}</div></li>
-                        <li className={`skill skill17 ${proficient('stealth')}`}><div>Stealth</div><div>{character.skills.stealth}</div></li>
-                        <li className={`skill skill18 ${proficient('survival')}`}><div>Survival</div><div>{character.skills.survival}</div></li>
-                    </ul>
-                </div>
-            </div>
-
-
-            <div>
-                <div>Passives:</div>
-                <ul className={'container characterPassives'}>
-                    <li id='passive1'>Perception: {character.passives.perception}</li>
-                    <li id='passive2'>Investigation: {character.passives.investigation}</li>
-                    <li id='passive3'>Insight: {character.passives.insight}</li>
-                </ul>
-            </div>
         </div>
     )
 }

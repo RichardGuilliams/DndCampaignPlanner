@@ -213,12 +213,40 @@ Dnd.Core.applyClassBonuses = function(stats){
 
 Dnd.Core.applyLevels = function(){
     for(var i = 0; i < this.character.level; i++){
-        if(i === 4 || i === 8 || i === 12 || i === 16 || i === 19){
+        if(i === 1 - 1 && this.character.class === 'Rogue') this.setExpertise();
+        if(i === 6 - 1 && this.character.class === 'Rogue') this.setExpertise();
+        if(i === 2 - 1 && this.character.class === 'Bard') this.setHalfProficiencies();
+        if(i === 3 - 1 && this.character.class === 'Bard') this.setExpertise();
+        if(i === 10 - 1 && this.character.class === 'Bard') this.setExpertise();
+        if(i === 4 - 1 || i === 8 || i === 12 || i === 16 || i === 19){
             this.increaseAbilityScore();
-            
         } 
     }
 };
+
+Dnd.Core.setHalfProficiencies = function (){
+    let halfProficiencies = Dnd.skillsList.filter(skill => {
+        if(!this.character.proficiencies.includes(skill)) return skill;
+    })
+
+    this.character.halfProficiencies = halfProficiencies;
+}
+
+Dnd.Core.setExpertise = function(d){
+    //filter out proficiencies that exist in the expertise array.
+    let proficiencies = this.character.proficiencies.filter( proficiency => {
+        if(!this.character.expertise.includes(proficiency)) return proficiency;
+    });
+
+    //if there are no proficiencies that exist anymore, short circuit the function
+    if(proficiencies.length <= 0) return
+
+    // select a random proficiency to turn into an expertise.
+    let proficiency = this.getRandomElement(proficiencies);
+
+    // push proficiency into the expertise array.
+    this.character.expertise.push(proficiency);
+}
 
 Dnd.Core.increaseAbilityScore = function(){
     switch(this.character.class){
@@ -238,7 +266,7 @@ Dnd.Core.increaseAbilityScore = function(){
 };
 
 Dnd.Core.increaseAbilities = function(abilities){
-    // Implement safeguard against a skill being raised above 20. 
+    // TODO Implement safeguard against a skill being raised above 20. 
     // We will need to change the way the racial bonuses are added.
     let count = Math.floor(Math.random() * 2) + 1;
     if(count > 1){
